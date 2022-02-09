@@ -22,11 +22,11 @@ export default function Folder({
         }
         id={id}
         onClick={(e) => {
-          bringToFront(e)
+          bringToFront(e.currentTarget)
           setActiveWindow(name)
         }}
         onPointerDown={(e) => {
-          bringToFront(e)
+          bringToFront(e.currentTarget)
           setActiveWindow(name)
         }}
       >

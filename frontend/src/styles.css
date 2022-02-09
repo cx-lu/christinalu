@@ -212,11 +212,6 @@
   align-items: center;
 }
 
-#me .window-body {
-  background-image: url('./static/images/me.png');
-  background-size: contain;
-}
-
 .notes-preview {
   padding: 5px;
   border-top: 2px solid white;

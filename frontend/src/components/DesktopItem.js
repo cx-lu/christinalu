@@ -6,12 +6,16 @@ import textfile from '../static/pixel/textfile.png'
 import imagefile from '../static/pixel/imagefile.png'
 
 export default function DesktopItem({
+  id,
   name,
   icon,
   selectedItem,
   setSelectedItem,
   openWindows,
   setOpenWindows,
+  activeWindow,
+  setActiveWindow,
+  bringToFront,
 }) {
   return (
     <div
@@ -26,6 +30,8 @@ export default function DesktopItem({
       onDoubleClick={() => {
         if (openWindows.indexOf(name) == -1) {
           setOpenWindows((openWindows) => [...openWindows, name])
+          setActiveWindow(name)
+          bringToFront(document.getElementById(id))
         }
         setSelectedItem('')
       }}

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import axios from 'axios'
 import * as moment from 'moment'
 import './styles.css'
 
@@ -6,10 +7,12 @@ import DesktopItem from './components/DesktopItem'
 import Notes from './components/Notes'
 import Folder from './components/Folder'
 import TextFile from './components/TextFile'
+import ImageFile from './components/ImageFile'
 import MenuBarTab from './components/MenuBarTab'
 
-import files from './static/files.json'
 import cactus from './static/pixel/cactus.png'
+
+const FILES_URL = 'http://127.0.0.1:8000/files/'
 
 export default function App() {
   const [now, setNow] = useState(moment())
@@ -18,7 +21,9 @@ export default function App() {
   const [openWindows, setOpenWindows] = useState(['welcome.txt'])
   const [activeWindow, setActiveWindow] = useState('welcome.txt')
   const [highestIndex, setHighestIndex] = useState(0)
+  const [files, setFiles] = useState([])
 
+  // Get current time for display
   useEffect(() => {
     let timer = setInterval(() => {
       setNow(moment())
@@ -26,8 +31,16 @@ export default function App() {
     return () => clearInterval(timer)
   }, [])
 
-  function bringToFront(e) {
-    e.currentTarget.style.zIndex = highestIndex + 1
+  // Get files on Desktop
+  useEffect(() => {
+    axios
+      .get(FILES_URL)
+      .then((res) => setFiles(res.data))
+      .catch((err) => console.log(err))
+  }, [])
+
+  function bringToFront(element) {
+    element.style.zIndex = highestIndex + 1
     setHighestIndex(highestIndex + 1)
   }
 
@@ -35,57 +48,94 @@ export default function App() {
     <div className='desktop'>
       <div className='desktop-items'>
         <DesktopItem
+          id='archive'
           name='archive'
           icon='folder'
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           openWindows={openWindows}
           setOpenWindows={setOpenWindows}
+          activeWindow={activeWindow}
+          setActiveWindow={setActiveWindow}
+          bringToFront={bringToFront}
         />
         <DesktopItem
+          id='pix'
           name='pix'
           icon='folder'
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           openWindows={openWindows}
           setOpenWindows={setOpenWindows}
+          activeWindow={activeWindow}
+          setActiveWindow={setActiveWindow}
+          bringToFront={bringToFront}
         />
         <DesktopItem
+          id='notes'
           name='notes'
           icon='notes'
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           openWindows={openWindows}
           setOpenWindows={setOpenWindows}
+          activeWindow={activeWindow}
+          setActiveWindow={setActiveWindow}
+          bringToFront={bringToFront}
         />
         <DesktopItem
+          id='welcome'
           name='welcome.txt'
           icon='textfile'
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           openWindows={openWindows}
           setOpenWindows={setOpenWindows}
+          activeWindow={activeWindow}
+          setActiveWindow={setActiveWindow}
+          bringToFront={bringToFront}
         />
         <DesktopItem
+          id='dreams'
           name='dreams.txt'
           icon='textfile'
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           openWindows={openWindows}
           setOpenWindows={setOpenWindows}
+          activeWindow={activeWindow}
+          setActiveWindow={setActiveWindow}
+          bringToFront={bringToFront}
         />
         <DesktopItem
+          id='me'
           name='me.png'
           icon='imagefile'
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           openWindows={openWindows}
           setOpenWindows={setOpenWindows}
+          activeWindow={activeWindow}
+          setActiveWindow={setActiveWindow}
+          bringToFront={bringToFront}
         />
       </div>
       {files.map(
         (file) =>
-          openWindows.indexOf(file.name) !== -1 && (
+          openWindows.indexOf(file.name) !== -1 &&
+          (file.type === 'IMG' ? (
+            <ImageFile
+              key={file.id}
+              id={file.id}
+              name={file.name}
+              body={file.content}
+              openWindows={openWindows}
+              setOpenWindows={setOpenWindows}
+              bringToFront={bringToFront}
+              activeWindow={activeWindow}
+              setActiveWindow={setActiveWindow}
+            />
+          ) : (
             <TextFile
               key={file.id}
               id={file.id}
@@ -97,20 +147,7 @@ export default function App() {
               activeWindow={activeWindow}
               setActiveWindow={setActiveWindow}
             />
-          )
-      )}
-      {openWindows.indexOf('me.png') !== -1 && (
-        <TextFile
-          key={'me'}
-          id={'me'}
-          name={'me.png'}
-          body={''}
-          openWindows={openWindows}
-          setOpenWindows={setOpenWindows}
-          bringToFront={bringToFront}
-          activeWindow={activeWindow}
-          setActiveWindow={setActiveWindow}
-        />
+          ))
       )}
       {openWindows.indexOf('notes') !== -1 && (
         <Notes

@@ -1,9 +1,9 @@
 import React from 'react'
 
 import Draggable from 'react-draggable'
-import textfile from '../static/pixel/textfile.png'
+import imagefile from '../static/pixel/imagefile.png'
 
-export default function TextFile({
+export default function ImageFile({
   id,
   name,
   body,
@@ -31,7 +31,7 @@ export default function TextFile({
       >
         <div className='window-header'>
           <div className='window-header-label'>
-            <img draggable='false' src={textfile} height='15px' />
+            <img draggable='false' src={imagefile} height='15px' />
             &nbsp;{name}
           </div>
           <button
@@ -44,7 +44,7 @@ export default function TextFile({
           </button>
         </div>
         <div className='window-body'>
-          <div dangerouslySetInnerHTML={{ __html: body }} />
+          <img src={body} />
         </div>
       </div>
     </Draggable>

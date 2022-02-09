@@ -36,11 +36,11 @@ export default function Notes({
         className={activeWindow === 'notes' ? 'window active' : 'window'}
         id='notes'
         onClick={(e) => {
-          bringToFront(e)
+          bringToFront(e.currentTarget)
           setActiveWindow('notes')
         }}
         onPointerDown={(e) => {
-          bringToFront(e)
+          bringToFront(e.currentTarget)
           setActiveWindow('notes')
         }}
       >
