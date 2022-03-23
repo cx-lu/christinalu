@@ -9,7 +9,3 @@ __pycache__/
 
 # Mac
 .DS_Store
-
-# Images
-pixel/
-images/

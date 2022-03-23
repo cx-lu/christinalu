@@ -62,46 +62,6 @@ export default function Folder({
             openWindows={openWindows}
             setOpenWindows={setOpenWindows}
           />
-          <DesktopItem
-            name='f1'
-            icon='folder'
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            openWindows={openWindows}
-            setOpenWindows={setOpenWindows}
-          />
-          <DesktopItem
-            name='f2'
-            icon='folder'
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            openWindows={openWindows}
-            setOpenWindows={setOpenWindows}
-          />
-          <DesktopItem
-            name='f3'
-            icon='folder'
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            openWindows={openWindows}
-            setOpenWindows={setOpenWindows}
-          />
-          <DesktopItem
-            name='f4'
-            icon='folder'
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            openWindows={openWindows}
-            setOpenWindows={setOpenWindows}
-          />
-          <DesktopItem
-            name='f5'
-            icon='folder'
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            openWindows={openWindows}
-            setOpenWindows={setOpenWindows}
-          />
         </div>
       </div>
     </Draggable>

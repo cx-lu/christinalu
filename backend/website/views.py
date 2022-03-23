@@ -1,4 +1,5 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
 from .serializers import NoteSerializer, FileSerializer
 from .models import Note, File
 
@@ -12,5 +13,15 @@ class FilesViewSet(viewsets.ModelViewSet):
 
 # Get a file by its ID
 
-# Get a directory by its ID with list of files and subdirectories
+class FilesByParentViewSet(viewsets.ViewSet):
+    def retrieve(self, request, pk=None):
+        p = request.parent
+        queryset = File.objects.filter(parent__id__contains=p)
+        if not queryset:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        else:
+            serializer = FileSerializer(queryset)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+#Get list of directories by parent
 
