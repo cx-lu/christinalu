@@ -149,21 +149,6 @@
   border-bottom: 2px solid white;
 }
 
-.start {
-  border-top: 2px solid white;
-  border-left: 2px solid white;
-  border-right: 2px solid grey;
-  border-bottom: 2px solid grey;
-  padding: 5px;
-  width: 50px;
-  margin-right: 5px;
-  display: flex;
-}
-
-.start img {
-  height: 15px;
-}
-
 .menu-bar {
   width: 100vw;
   background-color: lightgray;
@@ -176,9 +161,45 @@
 }
 
 .menu-bar-left {
+  width: 100vw - 100px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  overflow: scroll;
+}
+
+.menu-bar-start {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid grey;
+  border-bottom: 2px solid grey;
+  padding: 5px;
+  width: 50px;
+  margin-right: 5px;
+  display: flex;
+}
+
+.menu-bar-start img {
+  height: 15px;
+}
+
+.menu-bar-windows {
+  display: flex;
+  overflow: scroll;
+}
+
+.menu-bar-time {
+  white-space: nowrap;
+  border-top: 2px solid grey;
+  border-left: 2px solid grey;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  background-color: whitesmoke;
+  padding: 5px;
+  width: 60px;
+  display: flex;
+  margin-left: 5px;
+  justify-content: center;
 }
 
 .open-file {

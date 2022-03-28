@@ -25,21 +25,23 @@ export default function MenuBar({
     <div className="menu-bar">
       <div className="menu-bar-content">
         <div className="menu-bar-left">
-          <div className="start">
+          <div className="menu-bar-start">
             <img src={cactus} />
             <strong>&nbsp;C</strong>/<strong>LU</strong>
           </div>
-          {openWindows.map((window, i) => (
-            <MenuBarTab
-              key={i}
-              name={window}
-              type={getWindowTypeByName(window)}
-              activeWindow={activeWindow}
-              setActiveWindow={setActiveWindow}
-            />
-          ))}
+          <div className="menu-bar-windows">
+            {openWindows.map((window, i) => (
+              <MenuBarTab
+                key={i}
+                name={window}
+                type={getWindowTypeByName(window)}
+                activeWindow={activeWindow}
+                setActiveWindow={setActiveWindow}
+              />
+            ))}
+          </div>
         </div>
-        <div className="time">{now.format("h:mm A")}</div>
+        <div className="menu-bar-time">{now.format("h:mm A")}</div>
       </div>
     </div>
   );
