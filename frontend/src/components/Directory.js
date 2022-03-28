@@ -13,6 +13,8 @@ export default function Directory({
   bringToFront,
   openWindows,
   setOpenWindows,
+  menuBarWindows,
+  setMenuBarWindows,
   activeWindow,
   setActiveWindow,
   zIndex,
@@ -55,6 +57,7 @@ export default function Directory({
             className="x-button"
             onClick={() => {
               setOpenWindows(openWindows.filter((item) => item !== name));
+              setMenuBarWindows(menuBarWindows.filter((item) => item !== name));
             }}
           >
             X
@@ -80,6 +83,8 @@ export default function Directory({
               setSelectedItem={setSelectedItem}
               openWindows={openWindows}
               setOpenWindows={setOpenWindows}
+              menuBarWindows={menuBarWindows}
+              setMenuBarWindows={setMenuBarWindows}
               activeWindow={activeWindow}
               setActiveWindow={setActiveWindow}
               bringToFront={bringToFront}
@@ -95,6 +100,8 @@ export default function Directory({
               setSelectedItem={setSelectedItem}
               openWindows={openWindows}
               setOpenWindows={setOpenWindows}
+              menuBarWindows={menuBarWindows}
+              setMenuBarWindows={setMenuBarWindows}
               activeWindow={activeWindow}
               setActiveWindow={setActiveWindow}
               bringToFront={bringToFront}

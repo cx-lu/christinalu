@@ -13,6 +13,8 @@ export default function Notes({
   bringToFront,
   activeWindow,
   setActiveWindow,
+  menuBarWindows,
+  setMenuBarWindows,
   zIndex,
 }) {
   const [notes, setNotes] = useState([]);
@@ -59,6 +61,9 @@ export default function Notes({
             className="x-button"
             onClick={() => {
               setOpenWindows(openWindows.filter((item) => item !== "notes"));
+              setMenuBarWindows(
+                menuBarWindows.filter((item) => item !== "notes")
+              );
             }}
           >
             X

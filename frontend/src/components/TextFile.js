@@ -9,6 +9,8 @@ export default function TextFile({
   body,
   openWindows,
   setOpenWindows,
+  menuBarWindows,
+  setMenuBarWindows,
   bringToFront,
   activeWindow,
   setActiveWindow,
@@ -36,6 +38,7 @@ export default function TextFile({
             className="x-button"
             onClick={() => {
               setOpenWindows(openWindows.filter((item) => item !== name));
+              setMenuBarWindows(menuBarWindows.filter((item) => item !== name));
             }}
           >
             X

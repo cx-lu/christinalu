@@ -18,6 +18,7 @@ const DESKTOP_FILES_ENDPOINT = "/files/?parent__isnull=true";
 export default function App() {
   const [selectedItem, setSelectedItem] = useState("");
   const [openWindows, setOpenWindows] = useState(["welcome.txt"]);
+  const [menuBarWindows, setMenuBarWindows] = useState(["welcome.txt"]);
   const [activeWindow, setActiveWindow] = useState("welcome.txt");
 
   const [files, setFiles] = useState([]);
@@ -70,6 +71,8 @@ export default function App() {
             setSelectedItem={setSelectedItem}
             openWindows={openWindows}
             setOpenWindows={setOpenWindows}
+            menuBarWindows={menuBarWindows}
+            setMenuBarWindows={setMenuBarWindows}
             activeWindow={activeWindow}
             setActiveWindow={setActiveWindow}
             bringToFront={bringToFront}
@@ -83,6 +86,8 @@ export default function App() {
           setSelectedItem={setSelectedItem}
           openWindows={openWindows}
           setOpenWindows={setOpenWindows}
+          menuBarWindows={menuBarWindows}
+          setMenuBarWindows={setMenuBarWindows}
           activeWindow={activeWindow}
           setActiveWindow={setActiveWindow}
           bringToFront={bringToFront}
@@ -97,6 +102,8 @@ export default function App() {
             setSelectedItem={setSelectedItem}
             openWindows={openWindows}
             setOpenWindows={setOpenWindows}
+            menuBarWindows={menuBarWindows}
+            setMenuBarWindows={setMenuBarWindows}
             activeWindow={activeWindow}
             setActiveWindow={setActiveWindow}
             bringToFront={bringToFront}
@@ -104,14 +111,17 @@ export default function App() {
         ))}
       </div>
       {dirs.map(
-        (dir) =>
+        (dir, i) =>
           openWindows.includes(dir.name) && (
             <Directory
               id={dir.id}
               name={dir.name}
+              key={i}
               bringToFront={bringToFront}
               openWindows={openWindows}
               setOpenWindows={setOpenWindows}
+              menuBarWindows={menuBarWindows}
+              setMenuBarWindows={setMenuBarWindows}
               activeWindow={activeWindow}
               setActiveWindow={setActiveWindow}
               zIndex={openWindows.indexOf(dir.name)}
@@ -119,16 +129,18 @@ export default function App() {
           )
       )}
       {files.map(
-        (file) =>
+        (file, i) =>
           openWindows.includes(file.name) &&
           (file.type === "IMG" ? (
             <ImageFile
-              key={file.id}
               id={file.id}
               name={file.name}
+              key={i}
               body={file.content}
               openWindows={openWindows}
               setOpenWindows={setOpenWindows}
+              menuBarWindows={menuBarWindows}
+              setMenuBarWindows={setMenuBarWindows}
               bringToFront={bringToFront}
               activeWindow={activeWindow}
               setActiveWindow={setActiveWindow}
@@ -136,12 +148,14 @@ export default function App() {
             />
           ) : (
             <TextFile
-              key={file.id}
               id={file.id}
               name={file.name}
+              key={i}
               body={file.content}
               openWindows={openWindows}
               setOpenWindows={setOpenWindows}
+              menuBarWindows={menuBarWindows}
+              setMenuBarWindows={setMenuBarWindows}
               bringToFront={bringToFront}
               activeWindow={activeWindow}
               setActiveWindow={setActiveWindow}
@@ -153,6 +167,8 @@ export default function App() {
         <Notes
           openWindows={openWindows}
           setOpenWindows={setOpenWindows}
+          menuBarWindows={menuBarWindows}
+          setMenuBarWindows={setMenuBarWindows}
           bringToFront={bringToFront}
           activeWindow={activeWindow}
           setActiveWindow={setActiveWindow}
@@ -160,10 +176,11 @@ export default function App() {
         />
       )}
       <MenuBar
-        openWindows={openWindows}
+        menuBarWindows={menuBarWindows}
         getWindowTypeByName={getWindowTypeByName}
         activeWindow={activeWindow}
         setActiveWindow={setActiveWindow}
+        bringToFront={bringToFront}
       />
     </div>
   );

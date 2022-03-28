@@ -6,10 +6,11 @@ import MenuBarTab from "./MenuBarTab";
 import cactus from "../static/pixel/cactus.png";
 
 export default function MenuBar({
-  openWindows,
+  menuBarWindows,
   getWindowTypeByName,
   activeWindow,
   setActiveWindow,
+  bringToFront,
 }) {
   const [now, setNow] = useState(moment());
 
@@ -30,13 +31,14 @@ export default function MenuBar({
             <strong>&nbsp;C</strong>/<strong>LU</strong>
           </div>
           <div className="menu-bar-windows">
-            {openWindows.map((window, i) => (
+            {menuBarWindows.map((window, i) => (
               <MenuBarTab
                 key={i}
                 name={window}
                 type={getWindowTypeByName(window)}
                 activeWindow={activeWindow}
                 setActiveWindow={setActiveWindow}
+                bringToFront={bringToFront}
               />
             ))}
           </div>

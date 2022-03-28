@@ -16,6 +16,8 @@ export default function DesktopItem({
   activeWindow,
   setActiveWindow,
   bringToFront,
+  menuBarWindows,
+  setMenuBarWindows,
 }) {
   return (
     <div
@@ -30,6 +32,9 @@ export default function DesktopItem({
       onDoubleClick={() => {
         if (!openWindows.includes(name)) {
           setOpenWindows((openWindows) => [...openWindows, name]);
+        }
+        if (!menuBarWindows.includes(name)) {
+          setMenuBarWindows((menuBarWindows) => [...menuBarWindows, name]);
         }
         setActiveWindow(name);
         bringToFront(name);

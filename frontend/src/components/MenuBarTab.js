@@ -10,12 +10,16 @@ export default function MenuBarTab({
   type,
   activeWindow,
   setActiveWindow,
+  bringToFront,
 }) {
   return (
     <div
       className={activeWindow == name ? "active-open-file" : "open-file"}
       key={name}
-      onMouseDown={() => setActiveWindow(name)}
+      onMouseDown={() => {
+        setActiveWindow(name);
+        bringToFront(name);
+      }}
     >
       <img
         draggable="false"
