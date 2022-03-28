@@ -28,7 +28,7 @@ export default function DesktopItem({
         }
       }}
       onDoubleClick={() => {
-        if (openWindows.indexOf(name) == -1) {
+        if (openWindows.includes(name)) {
           setOpenWindows((openWindows) => [...openWindows, name]);
           setActiveWindow(name);
           bringToFront(document.getElementById(id));

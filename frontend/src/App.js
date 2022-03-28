@@ -120,7 +120,7 @@ export default function App() {
       </div>
       {dirs.map(
         (dir) =>
-          openWindows.indexOf(dir.name) !== -1 && (
+          openWindows.includes(dir.name) && (
             <Directory
               id={dir.id}
               name={dir.name}
@@ -134,7 +134,7 @@ export default function App() {
       )}
       {files.map(
         (file) =>
-          openWindows.indexOf(file.name) !== -1 &&
+          openWindows.includes(file.name) &&
           (file.type === "IMG" ? (
             <ImageFile
               key={file.id}
@@ -161,7 +161,7 @@ export default function App() {
             />
           ))
       )}
-      {openWindows.indexOf("notes") !== -1 && (
+      {openWindows.includes("notes") && (
         <Notes
           openWindows={openWindows}
           setOpenWindows={setOpenWindows}
