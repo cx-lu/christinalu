@@ -9,9 +9,6 @@ import Directory from "./components/Directory";
 import TextFile from "./components/TextFile";
 import ImageFile from "./components/ImageFile";
 import MenuBar from "./components/MenuBar";
-import MenuBarTab from "./components/MenuBarTab";
-
-import cactus from "./static/pixel/cactus.png";
 
 const FILES_ENDPOINT = "/files/";
 const DIRS_ENDPOINT = "/directories/";
@@ -19,8 +16,6 @@ const DESKTOP_DIRS_ENDPOINT = "/directories/?parent__isnull=true";
 const DESKTOP_FILES_ENDPOINT = "/files/?parent__isnull=true";
 
 export default function App() {
-  const [now, setNow] = useState(moment());
-
   const [selectedItem, setSelectedItem] = useState("");
   const [openWindows, setOpenWindows] = useState(["welcome.txt"]);
   const [activeWindow, setActiveWindow] = useState("welcome.txt");
@@ -30,14 +25,6 @@ export default function App() {
   const [dirs, setDirs] = useState([]);
   const [desktopDirs, setDesktopDirs] = useState([]);
   const [desktopFiles, setDesktopFiles] = useState([]);
-
-  // Get current time for display
-  useEffect(() => {
-    let timer = setInterval(() => {
-      setNow(moment());
-    }, 1000); // every second
-    return () => clearInterval(timer);
-  }, []);
 
   useEffect(() => {
     (async () => {
