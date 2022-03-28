@@ -8,6 +8,7 @@ import Notes from "./components/Notes";
 import Directory from "./components/Directory";
 import TextFile from "./components/TextFile";
 import ImageFile from "./components/ImageFile";
+import MenuBar from "./components/MenuBar";
 import MenuBarTab from "./components/MenuBarTab";
 
 import cactus from "./static/pixel/cactus.png";
@@ -169,26 +170,12 @@ export default function App() {
           setActiveWindow={setActiveWindow}
         />
       )}
-      <div className="menu-bar">
-        <div className="menu-bar-content">
-          <div className="menu-bar-left">
-            <div className="start">
-              <img src={cactus} />
-              <strong>&nbsp;C</strong>/<strong>LU</strong>
-            </div>
-            {openWindows.map((window, i) => (
-              <MenuBarTab
-                key={i}
-                name={window}
-                type={getWindowTypeByName(window)}
-                activeWindow={activeWindow}
-                setActiveWindow={setActiveWindow}
-              />
-            ))}
-          </div>
-          <div className="time">{now.format("h:mm A")}</div>
-        </div>
-      </div>
+      <MenuBar
+        openWindows={openWindows}
+        getWindowTypeByName={getWindowTypeByName}
+        activeWindow={activeWindow}
+        setActiveWindow={setActiveWindow}
+      />
     </div>
   );
 }
