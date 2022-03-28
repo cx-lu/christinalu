@@ -37,10 +37,6 @@ export default function Notes({
       <div
         className={activeWindow === "notes" ? "window active" : "window"}
         id="notes"
-        onClick={(e) => {
-          bringToFront(e.currentTarget);
-          setActiveWindow("notes");
-        }}
         onPointerDown={(e) => {
           bringToFront(e.currentTarget);
           setActiveWindow("notes");

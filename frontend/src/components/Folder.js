@@ -39,10 +39,6 @@ export default function Folder({
           activeWindow == name ? "window active folder" : "window folder"
         }
         id={id}
-        onClick={(e) => {
-          bringToFront(e.currentTarget);
-          setActiveWindow(name);
-        }}
         onPointerDown={(e) => {
           bringToFront(e.currentTarget);
           setActiveWindow(name);

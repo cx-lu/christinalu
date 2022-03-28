@@ -20,10 +20,6 @@ export default function TextFile({
           activeWindow == name ? "window active text-file" : "window text-file"
         }
         id={id}
-        onClick={(e) => {
-          bringToFront(e.currentTarget);
-          setActiveWindow(name);
-        }}
         onPointerDown={(e) => {
           bringToFront(e.currentTarget);
           setActiveWindow(name);
