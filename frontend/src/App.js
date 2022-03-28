@@ -5,7 +5,7 @@ import "./styles.css";
 
 import DesktopItem from "./components/DesktopItem";
 import Notes from "./components/Notes";
-import Folder from "./components/Folder";
+import Directory from "./components/Directory";
 import TextFile from "./components/TextFile";
 import ImageFile from "./components/ImageFile";
 import MenuBarTab from "./components/MenuBarTab";
@@ -61,14 +61,25 @@ export default function App() {
     setHighestIndex(highestIndex + 1);
   }
 
+  function getWindowTypeByName(name) {
+    if (name === "notes") return "NTS";
+
+    let dirNames = dirs.map((dir) => dir.name);
+    let fileNames = files.map((file) => file.name);
+    let fileTypes = files.map((file) => file.type);
+
+    return dirNames.includes(name) ? "DIR" : fileTypes[fileNames.indexOf(name)];
+  }
+
   return (
     <div className="desktop">
       <div className="desktop-items">
-        {desktopDirs.map((dir) => (
+        {desktopDirs.map((dir, i) => (
           <DesktopItem
             id={dir.id}
             name={dir.name}
-            icon="folder"
+            key={i}
+            icon="DIR"
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
             openWindows={openWindows}
@@ -90,11 +101,12 @@ export default function App() {
           setActiveWindow={setActiveWindow}
           bringToFront={bringToFront}
         />
-        {desktopFiles.map((f) => (
+        {desktopFiles.map((file, i) => (
           <DesktopItem
-            id={f.id}
-            name={f.name}
-            icon={f.type === "TXT" ? "textfile" : "imagefile"}
+            id={file.id}
+            name={file.name}
+            key={i}
+            icon={file.type === "TXT" ? "textfile" : "imagefile"}
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
             openWindows={openWindows}
@@ -108,7 +120,7 @@ export default function App() {
       {dirs.map(
         (dir) =>
           openWindows.indexOf(dir.name) !== -1 && (
-            <Folder
+            <Directory
               id={dir.id}
               name={dir.name}
               bringToFront={bringToFront}
@@ -164,10 +176,11 @@ export default function App() {
               <img src={cactus} />
               <strong>&nbsp;C</strong>/<strong>LU</strong>
             </div>
-            {openWindows.map((file) => (
+            {openWindows.map((window, i) => (
               <MenuBarTab
-                name={file}
-                type={"textfile"}
+                key={i}
+                name={window}
+                type={getWindowTypeByName(window)}
                 activeWindow={activeWindow}
                 setActiveWindow={setActiveWindow}
               />

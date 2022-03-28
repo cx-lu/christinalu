@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Draggable from "react-draggable";
 import DesktopItem from "./DesktopItem";
-import folder from "../static/pixel/folder.png";
+import directory from "../static/pixel/directory.png";
 
 const DIRS_ENDPOINT = "/directories/?parent=";
 const FILES_ENDPOINT = "/files/?parent=";
 
-export default function Folder({
+export default function Directory({
   id,
   name,
   bringToFront,
@@ -22,9 +22,9 @@ export default function Folder({
 
   useEffect(() => {
     (async () => {
-      // Get subdirectories in folder to display icons
+      // Get subdirectories in directory to display icons
       const dirsRes = await axios.get(DIRS_ENDPOINT + id);
-      // Get files in folder to display icons
+      // Get files in directory to display icons
       const filesRes = await axios.get(FILES_ENDPOINT + id);
 
       setDirs(dirsRes.data);
@@ -36,7 +36,7 @@ export default function Folder({
     <Draggable bounds="parent">
       <div
         className={
-          activeWindow == name ? "window active folder" : "window folder"
+          activeWindow == name ? "window active directory" : "window directory"
         }
         id={id}
         onPointerDown={(e) => {
@@ -46,7 +46,7 @@ export default function Folder({
       >
         <div className="window-header">
           <div className="window-header-label">
-            <img draggable="false" src={folder} height="15px" />
+            <img draggable="false" src={directory} height="15px" />
             &nbsp;{name}
           </div>
           <button
@@ -72,7 +72,7 @@ export default function Folder({
             <DesktopItem
               id={dir.id}
               name={dir.name}
-              icon="folder"
+              icon="DIR"
               selectedItem={selectedItem}
               setSelectedItem={setSelectedItem}
               openWindows={openWindows}

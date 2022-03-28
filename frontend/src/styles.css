@@ -1,6 +1,6 @@
 * {
   cursor: url(./static/pixel/cursor.png) 3 0, auto;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
 }
 
 .noselect {
@@ -59,7 +59,7 @@
   border: 1px dotted cyan;
 }
 
-.folder {
+.directory {
   width: 378px;
   height: 300px;
   top: calc(50% - 150px);
