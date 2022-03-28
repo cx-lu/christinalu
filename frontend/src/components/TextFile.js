@@ -12,16 +12,18 @@ export default function TextFile({
   bringToFront,
   activeWindow,
   setActiveWindow,
+  zIndex,
 }) {
   return (
     <Draggable bounds="parent">
       <div
+        style={{ zIndex: zIndex }}
         className={
           activeWindow == name ? "window active text-file" : "window text-file"
         }
         id={id}
-        onPointerDown={(e) => {
-          bringToFront(e.currentTarget);
+        onPointerDown={() => {
+          bringToFront(name);
           setActiveWindow(name);
         }}
       >

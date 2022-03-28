@@ -15,6 +15,7 @@ export default function Directory({
   setOpenWindows,
   activeWindow,
   setActiveWindow,
+  zIndex,
 }) {
   const [selectedItem, setSelectedItem] = useState("");
   const [files, setFiles] = useState([]);
@@ -35,12 +36,13 @@ export default function Directory({
   return (
     <Draggable bounds="parent">
       <div
+        style={{ zIndex: zIndex }}
         className={
           activeWindow == name ? "window active directory" : "window directory"
         }
         id={id}
-        onPointerDown={(e) => {
-          bringToFront(e.currentTarget);
+        onPointerDown={() => {
+          bringToFront(name);
           setActiveWindow(name);
         }}
       >
@@ -68,10 +70,11 @@ export default function Directory({
             overflow: "scroll",
           }}
         >
-          {dirs.map((dir) => (
+          {dirs.map((dir, i) => (
             <DesktopItem
               id={dir.id}
               name={dir.name}
+              key={i}
               icon="DIR"
               selectedItem={selectedItem}
               setSelectedItem={setSelectedItem}
@@ -82,10 +85,11 @@ export default function Directory({
               bringToFront={bringToFront}
             />
           ))}
-          {files.map((file) => (
+          {files.map((file, i) => (
             <DesktopItem
               id={file.id}
               name={file.name}
+              key={i}
               icon={file.type === "TXT" ? "textfile" : "imagefile"}
               selectedItem={selectedItem}
               setSelectedItem={setSelectedItem}

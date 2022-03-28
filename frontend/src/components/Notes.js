@@ -13,6 +13,7 @@ export default function Notes({
   bringToFront,
   activeWindow,
   setActiveWindow,
+  zIndex,
 }) {
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState({});
@@ -35,10 +36,11 @@ export default function Notes({
   return (
     <Draggable bounds="parent">
       <div
+        style={{ zIndex: zIndex }}
         className={activeWindow === "notes" ? "window active" : "window"}
         id="notes"
-        onPointerDown={(e) => {
-          bringToFront(e.currentTarget);
+        onPointerDown={() => {
+          bringToFront("notes");
           setActiveWindow("notes");
         }}
       >

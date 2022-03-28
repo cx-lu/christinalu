@@ -19,7 +19,6 @@ export default function App() {
   const [selectedItem, setSelectedItem] = useState("");
   const [openWindows, setOpenWindows] = useState(["welcome.txt"]);
   const [activeWindow, setActiveWindow] = useState("welcome.txt");
-  const [highestIndex, setHighestIndex] = useState(0);
 
   const [files, setFiles] = useState([]);
   const [dirs, setDirs] = useState([]);
@@ -44,18 +43,17 @@ export default function App() {
     })();
   }, []);
 
-  function bringToFront(element) {
-    element.style.zIndex = highestIndex + 1;
-    setHighestIndex(highestIndex + 1);
+  function bringToFront(name) {
+    let newOpenWindows = openWindows.filter((window) => window !== name);
+    newOpenWindows.push(name);
+    setOpenWindows(newOpenWindows);
   }
 
   function getWindowTypeByName(name) {
     if (name === "notes") return "NTS";
-
     let dirNames = dirs.map((dir) => dir.name);
     let fileNames = files.map((file) => file.name);
     let fileTypes = files.map((file) => file.type);
-
     return dirNames.includes(name) ? "DIR" : fileTypes[fileNames.indexOf(name)];
   }
 
@@ -116,6 +114,7 @@ export default function App() {
               setOpenWindows={setOpenWindows}
               activeWindow={activeWindow}
               setActiveWindow={setActiveWindow}
+              zIndex={openWindows.indexOf(dir.name)}
             />
           )
       )}
@@ -133,6 +132,7 @@ export default function App() {
               bringToFront={bringToFront}
               activeWindow={activeWindow}
               setActiveWindow={setActiveWindow}
+              zIndex={openWindows.indexOf(file.name)}
             />
           ) : (
             <TextFile
@@ -145,6 +145,7 @@ export default function App() {
               bringToFront={bringToFront}
               activeWindow={activeWindow}
               setActiveWindow={setActiveWindow}
+              zIndex={openWindows.indexOf(file.name)}
             />
           ))
       )}
@@ -155,6 +156,7 @@ export default function App() {
           bringToFront={bringToFront}
           activeWindow={activeWindow}
           setActiveWindow={setActiveWindow}
+          zIndex={openWindows.indexOf("notes")}
         />
       )}
       <MenuBar

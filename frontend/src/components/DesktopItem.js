@@ -30,9 +30,9 @@ export default function DesktopItem({
       onDoubleClick={() => {
         if (!openWindows.includes(name)) {
           setOpenWindows((openWindows) => [...openWindows, name]);
-          setActiveWindow(name);
-          bringToFront(document.getElementById(id));
         }
+        setActiveWindow(name);
+        bringToFront(name);
         setSelectedItem("");
       }}
     >
