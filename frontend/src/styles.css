@@ -123,6 +123,10 @@
   overflow: scroll;
 }
 
+.text-body {
+  white-space: pre-wrap;
+}
+
 #notes-body {
   padding: 0;
   background-color: lightgoldenrodyellow;

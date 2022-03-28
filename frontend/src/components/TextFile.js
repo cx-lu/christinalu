@@ -44,9 +44,7 @@ export default function TextFile({
             X
           </button>
         </div>
-        <div className="window-body">
-          <div dangerouslySetInnerHTML={{ __html: body }} />
-        </div>
+        <div className="window-body text-body">{body}</div>
       </div>
     </Draggable>
   );
