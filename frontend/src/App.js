@@ -30,6 +30,8 @@ export default function App() {
   const [desktopDirs, setDesktopDirs] = useState([]);
   const [desktopFiles, setDesktopFiles] = useState([]);
 
+  const fileRefs = use;
+
   // Get current time for display
   useEffect(() => {
     let timer = setInterval(() => {
