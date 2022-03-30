@@ -11,6 +11,7 @@ export default function MenuBar({
   activeWindow,
   setActiveWindow,
   bringToFront,
+  zIndex,
 }) {
   const [now, setNow] = useState(moment());
 
@@ -23,7 +24,7 @@ export default function MenuBar({
   }, []);
 
   return (
-    <div className="menu-bar">
+    <div className="menu-bar" style={{ zIndex: zIndex }}>
       <div className="menu-bar-content">
         <div className="menu-bar-left">
           <div className="menu-bar-start">

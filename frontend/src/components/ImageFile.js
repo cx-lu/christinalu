@@ -1,7 +1,7 @@
 import React from "react";
 
 import Draggable from "react-draggable";
-import imagefile from "../static/pixel/imagefile.png";
+import WindowHeader from "./WindowHeader";
 
 export default function ImageFile({
   id,
@@ -21,7 +21,9 @@ export default function ImageFile({
       <div
         style={{ zIndex: zIndex }}
         className={
-          activeWindow == name ? "window active text-file" : "window text-file"
+          activeWindow == name
+            ? "window active image-file"
+            : "window image-file"
         }
         id={id}
         onPointerDown={() => {
@@ -29,23 +31,25 @@ export default function ImageFile({
           setActiveWindow(name);
         }}
       >
-        <div className="window-header">
-          <div className="window-header-label">
-            <img draggable="false" src={imagefile} height="15px" />
-            &nbsp;{name}
-          </div>
-          <button
-            className="x-button"
-            onClick={() => {
-              setOpenWindows(openWindows.filter((item) => item !== name));
-              setMenuBarWindows(menuBarWindows.filter((item) => item !== name));
-            }}
-          >
-            X
-          </button>
-        </div>
+        <WindowHeader
+          type="IMG"
+          name={name}
+          xFunction={() => {
+            setOpenWindows(openWindows.filter((item) => item !== name));
+            setMenuBarWindows(menuBarWindows.filter((item) => item !== name));
+          }}
+        />
         <div className="window-body">
-          <img src={body} />
+          <img
+            draggable="false"
+            src={body}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "fill",
+              marginBottom: "-5px",
+            }}
+          />
         </div>
       </div>
     </Draggable>

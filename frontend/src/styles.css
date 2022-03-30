@@ -5,6 +5,7 @@
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-tap-highlight-color: transparent; /* Remove Highlight */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
@@ -64,13 +65,24 @@
   height: 300px;
   top: calc(50% - 150px);
   left: calc(50% - 189px);
+  max-width: 100%;
 }
 
-.text-file {
+.directory-body {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  overflow: scroll;
+}
+
+.text-file,
+.image-file {
   width: 250px;
   height: 300px;
   top: calc(50% - 150px);
   left: calc(50% - 125px);
+  max-width: 100%;
 }
 
 .window {
@@ -107,6 +119,7 @@
   height: 400px;
   top: calc(50% - 200px);
   left: calc(50% - 250px);
+  max-width: 100%;
 }
 
 .window-body {
@@ -118,12 +131,12 @@
   border-left: 2px solid grey;
   border-right: 2px solid lightgrey;
   border-bottom: 2px solid lightgrey;
-  padding: 5px;
   box-sizing: border-box;
   overflow: scroll;
 }
 
 .text-body {
+  padding: 5px;
   white-space: pre-wrap;
 }
 

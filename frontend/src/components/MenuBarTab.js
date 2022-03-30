@@ -20,6 +20,10 @@ export default function MenuBarTab({
         setActiveWindow(name);
         bringToFront(name);
       }}
+      onTouchStart={() => {
+        setActiveWindow(name);
+        bringToFront(name);
+      }}
     >
       <img
         draggable="false"

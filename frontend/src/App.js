@@ -60,7 +60,7 @@ export default function App() {
 
   return (
     <div className="desktop">
-      <div className="desktop-items">
+      <div className="desktop-items noselect">
         {desktopDirs.map((dir, i) => (
           <DesktopItem
             id={dir.id}
@@ -181,6 +181,7 @@ export default function App() {
         activeWindow={activeWindow}
         setActiveWindow={setActiveWindow}
         bringToFront={bringToFront}
+        zIndex={openWindows.length}
       />
     </div>
   );

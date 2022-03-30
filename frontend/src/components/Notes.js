@@ -3,7 +3,7 @@ import axios from "axios";
 import * as moment from "moment";
 
 import Draggable from "react-draggable";
-import notesIcon from "../static/pixel/notes.png";
+import WindowHeader from "./WindowHeader";
 
 const NOTES_ENDPOINT = "/notes/";
 
@@ -46,29 +46,16 @@ export default function Notes({
           setActiveWindow("notes");
         }}
       >
-        <div className="window-header">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "center",
-            }}
-          >
-            <img draggable="false" src={notesIcon} height="15px" />
-            &nbsp;notes
-          </div>
-          <button
-            className="x-button"
-            onClick={() => {
-              setOpenWindows(openWindows.filter((item) => item !== "notes"));
-              setMenuBarWindows(
-                menuBarWindows.filter((item) => item !== "notes")
-              );
-            }}
-          >
-            X
-          </button>
-        </div>
+        <WindowHeader
+          type="NTS"
+          name="notes"
+          xFunction={() => {
+            setOpenWindows(openWindows.filter((item) => item !== "notes"));
+            setMenuBarWindows(
+              menuBarWindows.filter((item) => item !== "notes")
+            );
+          }}
+        />
         <div className="window-body" id="notes-body">
           <div className="notes-sidebar">
             {notes.map((note, i) => (
@@ -80,6 +67,10 @@ export default function Notes({
                     : "notes-preview"
                 }
                 onClick={() => {
+                  setSelectedNote(notes[i]);
+                  setSelectedNoteIndex(i);
+                }}
+                onTouchEnd={() => {
                   setSelectedNote(notes[i]);
                   setSelectedNoteIndex(i);
                 }}

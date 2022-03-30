@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Draggable from "react-draggable";
 import DesktopItem from "./DesktopItem";
-import directory from "../static/pixel/directory.png";
+import WindowHeader from "./WindowHeader";
 
 const DIRS_ENDPOINT = "/directories/?parent=";
 const FILES_ENDPOINT = "/files/?parent=";
@@ -36,43 +36,27 @@ export default function Directory({
   }, []);
 
   return (
-    <Draggable bounds="parent">
+    <Draggable cancel=".desktop-item" bounds="parent">
       <div
+        id={id}
         style={{ zIndex: zIndex }}
         className={
           activeWindow == name ? "window active directory" : "window directory"
         }
-        id={id}
         onPointerDown={() => {
           bringToFront(name);
           setActiveWindow(name);
         }}
       >
-        <div className="window-header">
-          <div className="window-header-label">
-            <img draggable="false" src={directory} height="15px" />
-            &nbsp;{name}
-          </div>
-          <button
-            className="x-button"
-            onClick={() => {
-              setOpenWindows(openWindows.filter((item) => item !== name));
-              setMenuBarWindows(menuBarWindows.filter((item) => item !== name));
-            }}
-          >
-            X
-          </button>
-        </div>
-        <div
-          className="window-body"
-          style={{
-            display: "flex",
-            flexFlow: "row wrap",
-            justifyContent: "flex-start",
-            alignContent: "flex-start",
-            overflow: "scroll",
+        <WindowHeader
+          type="DIR"
+          name={name}
+          xFunction={() => {
+            setOpenWindows(openWindows.filter((item) => item !== name));
+            setMenuBarWindows(menuBarWindows.filter((item) => item !== name));
           }}
-        >
+        />
+        <div className="window-body directory-body">
           {dirs.map((dir, i) => (
             <DesktopItem
               id={dir.id}
