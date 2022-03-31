@@ -149,6 +149,7 @@
 .notes-sidebar {
   width: 30%;
   background-color: lightgrey;
+  overflow: scroll;
 }
 
 .x-button {
