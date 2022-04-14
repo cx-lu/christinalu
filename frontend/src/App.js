@@ -137,6 +137,8 @@ export default function App() {
               name={file.name}
               key={i}
               body={file.content}
+              width={file.width}
+              height={file.height}
               openWindows={openWindows}
               setOpenWindows={setOpenWindows}
               menuBarWindows={menuBarWindows}
@@ -152,6 +154,8 @@ export default function App() {
               name={file.name}
               key={i}
               body={file.content}
+              width={file.width}
+              height={file.height}
               openWindows={openWindows}
               setOpenWindows={setOpenWindows}
               menuBarWindows={menuBarWindows}

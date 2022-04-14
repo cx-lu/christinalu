@@ -29,6 +29,8 @@ class File(models.Model):
     id = models.CharField(max_length=255, primary_key=True)
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=255, choices=TYPE_CHOICES, default=TEXTFILE)
+    width = models.IntegerField(default=250)
+    height = models.IntegerField(default=300)
     content = models.TextField()
     parent = models.ForeignKey(Directory, null=True, blank=True, related_name='files', on_delete=models.CASCADE)
 

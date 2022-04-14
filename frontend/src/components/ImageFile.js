@@ -7,6 +7,8 @@ export default function ImageFile({
   id,
   name,
   body,
+  width,
+  height,
   openWindows,
   setOpenWindows,
   menuBarWindows,
@@ -19,7 +21,13 @@ export default function ImageFile({
   return (
     <Draggable bounds="parent">
       <div
-        style={{ zIndex: zIndex }}
+        style={{
+          zIndex: zIndex,
+          width: width + "px",
+          height: height + "px",
+          top: "calc(50% - " + height / 2 + "px)",
+          left: "calc(50% - " + width / 2 + "px)",
+        }}
         className={
           activeWindow == name
             ? "window active image-file"

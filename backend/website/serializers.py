@@ -17,4 +17,4 @@ class DirectorySerializer(serializers.ModelSerializer):
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
-        fields= ['id', 'name', 'type', 'content', 'parent']
+        fields= ['id', 'name', 'type', 'width', 'height', 'content', 'parent']
