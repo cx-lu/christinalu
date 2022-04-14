@@ -6,6 +6,7 @@ db.sqlite3
 
 # Python files
 __pycache__/
+local_settings.py
 
 # Mac
 .DS_Store
