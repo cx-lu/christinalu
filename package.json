@@ -1,0 +1,22 @@
+{
+  "name": "christinalu",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently --kill-others \"cd backend && python3 manage.py runserver\" \"cd frontend && yarn start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cx-lu/christinalu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cx-lu/christinalu/issues"
+  },
+  "homepage": "https://github.com/cx-lu/christinalu#readme",
+  "dependencies": {
+    "concurrently": "^7.1.0"
+  }
+}
