@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently --kill-others \"cd backend && python3 manage.py runserver\" \"cd frontend && yarn start\""
+    "start": "concurrently --kill-others \"cd backend && pip install -r requirements.txt && python3 manage.py runserver\" \"cd frontend && yarn install && yarn start\""
   },
   "repository": {
     "type": "git",
