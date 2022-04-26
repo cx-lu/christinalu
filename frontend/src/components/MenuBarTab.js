@@ -14,7 +14,7 @@ export default function MenuBarTab({
 }) {
   return (
     <div
-      className={activeWindow == name ? "active-open-file" : "open-file"}
+      className={activeWindow === name ? "active-open-file" : "open-file"}
       key={name}
       onMouseDown={() => {
         setActiveWindow(name);
@@ -27,6 +27,7 @@ export default function MenuBarTab({
     >
       <img
         draggable="false"
+        alt=""
         src={
           type === "NTS"
             ? notes

@@ -28,7 +28,7 @@ export default function MenuBar({
       <div className="menu-bar-content">
         <div className="menu-bar-left">
           <div className="menu-bar-start">
-            <img src={cactus} />
+            <img alt="" src={cactus} />
             <strong>&nbsp;C</strong>/<strong>LU</strong>
           </div>
           <div className="menu-bar-windows">

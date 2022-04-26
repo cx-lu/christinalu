@@ -5,11 +5,18 @@ name = "pypi"
 
 [packages]
 django = "*"
+whitenoise = "*"
 djangorestframework = "*"
-django-cors-headers = "*"
 django-filter = "*"
+django-cors-headers = "*"
+gunicorn = "*"
+django-heroku = "*"
+wheel = "*"
+setuptools = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.10"

@@ -4,8 +4,8 @@ import Draggable from "react-draggable";
 import DesktopItem from "./DesktopItem";
 import WindowHeader from "./WindowHeader";
 
-const DIRS_ENDPOINT = "/directories/?parent=";
-const FILES_ENDPOINT = "/files/?parent=";
+const DIRS_ENDPOINT = "/api/directories/?parent=";
+const FILES_ENDPOINT = "/api/files/?parent=";
 
 export default function Directory({
   id,
@@ -33,15 +33,15 @@ export default function Directory({
       setDirs(dirsRes.data);
       setFiles(filesRes.data);
     })();
-  }, []);
+  }, [id]);
 
   return (
-    <Draggable cancel=".desktop-item" bounds="parent">
+    <Draggable cancel=".desktop-item" bounds="parent" handle=".window-header">
       <div
         id={id}
         style={{ zIndex: zIndex }}
         className={
-          activeWindow == name ? "window active directory" : "window directory"
+          activeWindow === name ? "window active directory" : "window directory"
         }
         onPointerDown={() => {
           bringToFront(name);

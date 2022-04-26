@@ -19,7 +19,7 @@ export default function TextFile({
   zIndex,
 }) {
   return (
-    <Draggable bounds="parent">
+    <Draggable bounds="parent" handle=".window-header">
       <div
         style={{
           zIndex: zIndex,
@@ -29,7 +29,7 @@ export default function TextFile({
           left: "calc(50% - " + width / 2 + "px)",
         }}
         className={
-          activeWindow == name ? "window active text-file" : "window text-file"
+          activeWindow === name ? "window active text-file" : "window text-file"
         }
         id={id}
         onPointerDown={() => {

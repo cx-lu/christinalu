@@ -16,6 +16,7 @@
 .desktop {
   width: 100vw;
   height: 100vh;
+  max-height: -webkit-fill-available;
   background-color: lightsteelblue;
   background-image: url(./static/images/desk.png);
   background-size: 300px 400px;
@@ -187,10 +188,11 @@
 }
 
 .menu-bar-start {
-  border-top: 2px solid white;
-  border-left: 2px solid white;
-  border-right: 2px solid grey;
-  border-bottom: 2px solid grey;
+  border-top: 2px solid grey;
+  border-left: 2px solid grey;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  background-color: whitesmoke;
   padding: 5px;
   width: 50px;
   margin-right: 5px;
@@ -230,6 +232,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .active-open-file {
@@ -243,6 +247,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .menu-bar-content {
@@ -298,4 +304,15 @@
   color: grey;
   font-size: 0.8rem;
   margin-bottom: 5px;
+}
+
+.text-file,
+.menu-bar,
+.directory {
+  touch-action: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+Draggable {
+  touch-action: none;
 }

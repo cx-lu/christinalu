@@ -19,7 +19,7 @@ export default function ImageFile({
   zIndex,
 }) {
   return (
-    <Draggable bounds="parent">
+    <Draggable bounds="parent" handle=".window-header">
       <div
         style={{
           zIndex: zIndex,
@@ -29,7 +29,7 @@ export default function ImageFile({
           left: "calc(50% - " + width / 2 + "px)",
         }}
         className={
-          activeWindow == name
+          activeWindow === name
             ? "window active image-file"
             : "window image-file"
         }
@@ -50,6 +50,7 @@ export default function ImageFile({
         <div className="window-body">
           <img
             draggable="false"
+            alt=""
             src={body}
             style={{
               width: "100%",

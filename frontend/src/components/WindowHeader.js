@@ -11,6 +11,7 @@ export default function WindowHeader({ type, name, xFunction }) {
       <div className="window-header-label">
         <img
           draggable="false"
+          alt=""
           src={
             type === "TXT"
               ? textfile

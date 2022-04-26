@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import * as moment from "moment";
 import "./styles.css";
 
 import DesktopItem from "./components/DesktopItem";
@@ -10,10 +9,10 @@ import TextFile from "./components/TextFile";
 import ImageFile from "./components/ImageFile";
 import MenuBar from "./components/MenuBar";
 
-const FILES_ENDPOINT = "/files/";
-const DIRS_ENDPOINT = "/directories/";
-const DESKTOP_DIRS_ENDPOINT = "/directories/?parent__isnull=true";
-const DESKTOP_FILES_ENDPOINT = "/files/?parent__isnull=true";
+const FILES_ENDPOINT = "/api/files/";
+const DIRS_ENDPOINT = "/api/directories/";
+const DESKTOP_DIRS_ENDPOINT = "/api/directories/?parent__isnull=true";
+const DESKTOP_FILES_ENDPOINT = "/api/files/?parent__isnull=true";
 
 export default function App() {
   const [selectedItem, setSelectedItem] = useState("");

@@ -5,7 +5,7 @@ import * as moment from "moment";
 import Draggable from "react-draggable";
 import WindowHeader from "./WindowHeader";
 
-const NOTES_ENDPOINT = "/notes/";
+const NOTES_ENDPOINT = "/api/notes/";
 
 export default function Notes({
   openWindows,
@@ -36,7 +36,7 @@ export default function Notes({
   }, []);
 
   return (
-    <Draggable bounds="parent">
+    <Draggable bounds="parent" handle=".window-header">
       <div
         style={{ zIndex: zIndex }}
         className={activeWindow === "notes" ? "window active" : "window"}

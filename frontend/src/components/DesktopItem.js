@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import directory from "../static/pixel/directory.png";
 import notes from "../static/pixel/notes.png";
@@ -21,7 +21,7 @@ export default function DesktopItem({
   setMenuBarWindows,
 }) {
   function selectDesktopItem() {
-    if (selectedItem == name) {
+    if (selectedItem === name) {
       setSelectedItem("");
     } else {
       setSelectedItem(name);
@@ -59,24 +59,24 @@ export default function DesktopItem({
     <div className="desktop-item noselect" onClick={handleClicks}>
       <div
         className={
-          selectedItem == name ? "selected-desktop-icon" : "desktop-icon"
+          selectedItem === name ? "selected-desktop-icon" : "desktop-icon"
         }
       >
-        {icon == "DIR" ? (
-          <img draggable="false" src={directory} />
-        ) : icon == "notes" ? (
-          <img draggable="false" src={notes} />
-        ) : icon == "textfile" ? (
-          <img draggable="false" src={textfile} />
-        ) : icon == "imagefile" ? (
-          <img draggable="false" src={imagefile} />
+        {icon === "DIR" ? (
+          <img draggable="false" alt="" src={directory} />
+        ) : icon === "notes" ? (
+          <img draggable="false" alt="" src={notes} />
+        ) : icon === "textfile" ? (
+          <img draggable="false" alt="" src={textfile} />
+        ) : icon === "imagefile" ? (
+          <img draggable="false" alt="" src={imagefile} />
         ) : (
-          <img />
+          <img alt="" />
         )}
       </div>
       <div
         className={
-          selectedItem == name ? "selected-desktop-label" : "desktop-label"
+          selectedItem === name ? "selected-desktop-label" : "desktop-label"
         }
       >
         <span>{name}</span>

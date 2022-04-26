@@ -1,4 +1,4 @@
-### Run backend
+**Run app**
 
 ```bash
 cd backend
@@ -11,11 +11,4 @@ pipenv sync
 python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py runserver
-```
-
-### Run frontend
-
-```
-yarn
-yarn start
 ```
